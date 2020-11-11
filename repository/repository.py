@@ -1,8 +1,8 @@
 import databases
 import sqlalchemy
-from environment import DATABASE_URL
+import environment
 
-database = databases.Database(DATABASE_URL)
+database = databases.Database(environment.DATABASE_URL)
 metadata = sqlalchemy.MetaData()
 
 todosTable = sqlalchemy.Table(
@@ -14,7 +14,7 @@ todosTable = sqlalchemy.Table(
 )
 
 engine = sqlalchemy.create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False}
+    environment.DATABASE_URL, connect_args={"check_same_thread": False}
 )
 
 metadata.create_all(engine)
