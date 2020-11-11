@@ -1,4 +1,4 @@
-from repository import repository
+from infrastructure import repository
 from modules.todos import todosSchema
 
 class TodosModel:
@@ -15,5 +15,6 @@ class TodosModel:
             text=todo.text,
             completed=todo.completed
         )
+        
         last_record_id = await repository.database.execute(query)
         return { ** todo.dict(), "id": last_record_id }

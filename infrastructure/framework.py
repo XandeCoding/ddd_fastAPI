@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from modules.todos import todos
-from repository import repository
+from infrastructure import repository
 
 app = FastAPI()
 
